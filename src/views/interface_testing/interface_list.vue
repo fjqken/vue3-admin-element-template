@@ -1,10 +1,12 @@
 <template>
   <div>
-    <div>
+    <div class="flex_headers">
       <div style="margin-bottom: 20px">
-        <span>名称:</span>
-        <el-input style="width: 120px" v-model="input" placeholder="Please input" clearable
-      /></div>
+        <el-input style="width: 200px;margin-left: 20px" v-model="name" placeholder="请输入接口名称" clearable />
+        <el-input style="width: 200px;margin-left: 20px " v-model="methods" placeholder="请输入请求方式" clearable />
+        <el-button type="primary" :icon="Search" @click="getWorkshopPageFn">搜索</el-button>
+      </div>
+      <el-button type="primary" plain style="margin-right: 20px;">添加接口</el-button>
     </div>
     <div>
       <proTable
