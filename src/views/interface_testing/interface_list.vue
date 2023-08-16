@@ -6,7 +6,7 @@
         <el-input style="width: 200px;margin-left: 20px " v-model="methods" placeholder="请输入请求方式" clearable />
         <el-button type="primary" :icon="Search" @click="getWorkshopPageFn">搜索</el-button>
       </div>
-      <el-button type="primary" plain style="margin-right: 20px;">添加接口</el-button>
+      <el-button type="primary" plain style="margin-right: 20px" @click="dialogFormVisible = true">添加接口</el-button>
     </div>
     <div>
       <proTable
@@ -43,7 +43,7 @@
 
 <script setup>
   import proTable from '@/components/proTable/index.vue';
-  import { Delete, Edit } from '@element-plus/icons-vue';
+  import { Search, Delete, Edit } from '@element-plus/icons-vue';
   import { onMounted, ref } from 'vue';
   import { useHandleData } from '@/utils/useHandleData';
   import {
@@ -54,8 +54,12 @@
   } from '@/api/interface_test';
   // import { getWorkshopPage, deleteWorkshop } from "@/api/factory/workshop";
   const tableList = ref([]);
-  const input = ref('')
-
+  const total = ref(0);
+  const currentPages = ref(1);
+  const pageSizes = ref(10);
+  const name = ref('');
+  const methods = ref('');
+  const dialogFormVisible = ref(false);
   // const tableList = [
   //   {
   //     sort: '2016-05-03',
@@ -101,10 +105,6 @@
       props: 'controls',
     },
   ];
-  const total = ref(0);
-  const currentPages = ref(1);
-  const pageSizes = ref(10);
-
   onMounted(() => {
     //初始化
     getWorkshopPageFn();
@@ -145,6 +145,8 @@
       let res = await get_interface_list({
         current_page: currentPages.value,
         page_size: pageSizes.value,
+        methods: methods.value,
+        name: name.value,
       });
       total.value = res.total;
       // console.log(res.total);
@@ -172,3 +174,11 @@
     getWorkshopPageFn();
   };
 </script>
+<style>
+.flex_headers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+</style>
