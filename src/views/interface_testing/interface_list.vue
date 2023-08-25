@@ -2,11 +2,33 @@
   <div>
     <div class="flex_headers">
       <div style="margin-bottom: 20px">
-        <el-input style="width: 200px;margin-left: 20px" v-model="name" placeholder="请输入接口名称" clearable />
-        <el-input style="width: 200px;margin-left: 20px " v-model="methods" placeholder="请输入请求方式" clearable />
+        <el-input
+          style="width: 200px; margin-left: 20px"
+          v-model="name"
+          placeholder="请输入接口名称"
+          clearable
+        />
+        <el-input
+          style="width: 200px; margin-left: 20px"
+          v-model="methods"
+          placeholder="请输入请求方式"
+          clearable
+        />
         <el-button type="primary" :icon="Search" @click="getWorkshopPageFn">搜索</el-button>
       </div>
-      <el-button type="primary" plain style="margin-right: 20px" @click="dialogFormVisible = true">添加接口</el-button>
+      <el-button type="primary" plain style="margin-right: 20px" @click="showDialog1"
+        >添加接口</el-button
+      >
+      <my-dialog
+        ref="dataDialog"
+        :title="MyDialog_body.title"
+        :content="MyDialog_body.content"
+        :cancel-text="MyDialog_body.cancelText"
+        :ok-text="MyDialog_body.okText"
+        @ok="onOk"
+        :visible1="true"
+        :parentMethod="onOk"
+      />
     </div>
     <div>
       <proTable
@@ -44,6 +66,7 @@
 <script setup>
   import proTable from '@/components/proTable/index.vue';
   import { Search, Delete, Edit } from '@element-plus/icons-vue';
+  import MyDialog from '@/components/MyDialog/index.vue';
   import { onMounted, ref } from 'vue';
   import { useHandleData } from '@/utils/useHandleData';
   import {
@@ -59,18 +82,13 @@
   const pageSizes = ref(10);
   const name = ref('');
   const methods = ref('');
-  const dialogFormVisible = ref(false);
-  // const tableList = [
-  //   {
-  //     sort: '2016-05-03',
-  //     workshopName: 'Tom',
-  //     deptName: 'California',
-  //     status: 1,
-  //     createTime: 'No. 189, Grove St, Los Angeles',
-  //     remark: 'CA 90036',
-  //     controls: '',
-  //   },
-  // ];
+  const MyDialog_body = ref({
+    title: '弹窗标题1',
+    content: '弹窗内容',
+    cancelText: '取消',
+    okText: '确定',
+    visible: true,
+  });
   const tableHeaderData = [
     {
       label: 'ID',
@@ -155,15 +173,6 @@
       console.log(err);
     }
   };
-  // const getWorkshopPageFn1 = async () => {
-  //   get_interface_list({ pageNum: currentPages.value, pageSize: pageSizes.value }).then((res) =>
-  //     console.log(res.data.data + '111111111111111111111111111')
-  //   ).catch(err => {
-  //       // 报错
-  //       console.log(err);
-  //     });
-  // };
-
   // //分页相关按钮
   const handleSizeChange = (page) => {
     pageSizes.value = page;
@@ -173,12 +182,20 @@
     currentPages.value = page;
     getWorkshopPageFn();
   };
+  const onOk = () => {
+    console.log('点击了确定按钮');
+  };
+  //设置弹窗显示
+  const dataDialog = ref(null);
+  const showDialog1 = () => {
+    dataDialog.value.setdialogvisible(true)
+  };
 </script>
 <style>
-.flex_headers {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
+  .flex_headers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 </style>
