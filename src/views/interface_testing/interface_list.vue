@@ -1,5 +1,17 @@
 <template>
   <div>
+    <my-dialog
+      ref="dataDialog"
+      :title="MyDialog_body.title"
+      :content="MyDialog_body.content"
+      :cancel-text="MyDialog_body.cancelText"
+      :ok-text="MyDialog_body.okText"
+      @ok="onOk"
+      :visible1="true"
+      :parentMethod="onOk"
+    >
+      Hello World
+    </my-dialog>
     <div class="flex_headers">
       <div style="margin-bottom: 20px">
         <el-input
@@ -19,16 +31,6 @@
       <el-button type="primary" plain style="margin-right: 20px" @click="showDialog1"
         >添加接口</el-button
       >
-      <my-dialog
-        ref="dataDialog"
-        :title="MyDialog_body.title"
-        :content="MyDialog_body.content"
-        :cancel-text="MyDialog_body.cancelText"
-        :ok-text="MyDialog_body.okText"
-        @ok="onOk"
-        :visible1="true"
-        :parentMethod="onOk"
-      />
     </div>
     <div>
       <proTable
@@ -84,7 +86,7 @@
   const methods = ref('');
   const MyDialog_body = ref({
     title: '弹窗标题1',
-    content: '弹窗内容',
+    content: '弹窗内容1111',
     cancelText: '取消',
     okText: '确定',
     visible: true,

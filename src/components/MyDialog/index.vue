@@ -2,6 +2,7 @@
   <div>
     <el-dialog :title="title" v-model="visible" :close-on-click-modal="false">
       <span>{{ content }}</span>
+      <div><component :is="comps"></component></div>
       <template v-slot:footer class="dialog-footer">
         <el-button @click="visible = false">{{ cancelText }}</el-button>
         <el-button type="primary" @click="parentMethod">{{ okText }}</el-button>
@@ -64,6 +65,9 @@
     parentMethod: {
       type: Function,
       default: () => {},
+    },
+    comps: {
+      require: false,
     },
   });
   const emit = defineEmits(['ok']);
