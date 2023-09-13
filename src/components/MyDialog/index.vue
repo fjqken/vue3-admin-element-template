@@ -79,10 +79,12 @@
     context.emit('ok');
     visible.value = false;
   };
+  const setdialogvisible = async (res) => {
+    visible.value = res;
+  };
+  //目的是把属性和方法暴露出去，可以用于父子组件通信
   defineExpose({
-    setdialogvisible(res) {
-      visible.value = res;
-    },
+    setdialogvisible,
     getFirstData() {
       return visible.value;
     },

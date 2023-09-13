@@ -12,6 +12,11 @@
     >
       Hello World
     </my-dialog>
+    <addInterface
+      :title="MyDialog_body.title"
+      v-if="true"
+    >
+    </addInterface>
     <div class="flex_headers">
       <div style="margin-bottom: 20px">
         <el-input
@@ -30,6 +35,9 @@
       </div>
       <el-button type="primary" plain style="margin-right: 20px" @click="showDialog1"
         >添加接口</el-button
+      >
+      <el-button type="primary" plain style="margin-right: 20px" @click="showDialog1"
+        >添加接口1</el-button
       >
     </div>
     <div>
@@ -69,6 +77,7 @@
   import proTable from '@/components/proTable/index.vue';
   import { Search, Delete, Edit } from '@element-plus/icons-vue';
   import MyDialog from '@/components/MyDialog/index.vue';
+  import addInterface from './components/add_interface.vue';
   import { onMounted, ref } from 'vue';
   import { useHandleData } from '@/utils/useHandleData';
   import {
@@ -190,7 +199,7 @@
   //设置弹窗显示
   const dataDialog = ref(null);
   const showDialog1 = () => {
-    dataDialog.value.setdialogvisible(true)
+    dataDialog.value.setdialogvisible(true);
   };
 </script>
 <style>
