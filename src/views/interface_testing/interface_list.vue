@@ -10,7 +10,7 @@
       :visible1="true"
       :parentMethod="onOk"
     >
-      Hello World
+      aaa
     </my-dialog>
     <addInterface
       :title="MyDialog_body.title"

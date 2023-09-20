@@ -1,12 +1,26 @@
 <template>
-  <el-dialog v-model="visible" :title="title" :close-on-click-modal="false" append-to-body>
-  </el-dialog>
+  <my-dialog
+    ref="dataDialog"
+    :title="title"
+    :content="111"
+    :cancel-text="111"
+    :ok-text="111"
+    @ok="onOk"
+    :visible1="true"
+    :parentMethod="onOk"
+  >
+    aaaa
+  </my-dialog>
 </template>
 
 <script setup>
   import { ref } from 'vue';
+  import MyDialog from '@/components/MyDialog/index.vue';
   const visible = ref(true);
   // const title = ref('标题');
+  const onOk = () => {
+    console.log('点击了确定按钮');
+  };
   const props = defineProps({
     title: {
       type: String,
