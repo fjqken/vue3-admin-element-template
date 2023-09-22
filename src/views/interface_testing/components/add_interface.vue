@@ -3,13 +3,11 @@
     ref="dataDialog"
     :title="title"
     :content="111"
-    :cancel-text="111"
-    :ok-text="111"
     @ok="onOk"
     :visible1="true"
     :parentMethod="onOk"
   >
-    aaaa
+    <div class="a">aaaa</div>
   </my-dialog>
 </template>
 
@@ -33,6 +31,8 @@
   });
 </script>
 
-<style scoped>
-
+<style lang="scss">
+  .a {
+    color: $base-color-yellow;
+  }
 </style>

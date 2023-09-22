@@ -1,17 +1,17 @@
 <template>
   <div>
-    <my-dialog
-      ref="dataDialog"
-      :title="MyDialog_body.title"
-      :content="MyDialog_body.content"
-      :cancel-text="MyDialog_body.cancelText"
-      :ok-text="MyDialog_body.okText"
-      @ok="onOk"
-      :visible1="true"
-      :parentMethod="onOk"
-    >
-      aaa
-    </my-dialog>
+<!--    <my-dialog-->
+<!--      ref="dataDialog"-->
+<!--      :title="MyDialog_body.title"-->
+<!--      :content="MyDialog_body.content"-->
+<!--      :cancel-text="MyDialog_body.cancelText"-->
+<!--      :ok-text="MyDialog_body.okText"-->
+<!--      @ok="onOk"-->
+<!--      :visible1="true"-->
+<!--      :parentMethod="onOk"-->
+<!--    >-->
+<!--      aaa-->
+<!--    </my-dialog>-->
     <addInterface
       :title="MyDialog_body.title"
       v-if="true"

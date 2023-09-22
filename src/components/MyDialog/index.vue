@@ -2,7 +2,7 @@
   <div>
     <el-dialog :title="title" v-model="visible" :close-on-click-modal="false">
 <!--      <span>{{ content }}</span>-->
-<!--      <div><component :is="comps"></component></div>-->
+      <div><component :is="comps"></component></div>
       <slot></slot>
       <template v-slot:footer class="dialog-footer">
         <el-button @click="visible = false">{{ cancelText }}</el-button>
@@ -75,7 +75,7 @@
   const changeTotal = () => {
     emit('ok');
   };
-  const visible = ref(false);
+  const visible = ref(true);
   const ok = () => {
     context.emit('ok');
     visible.value = false;
