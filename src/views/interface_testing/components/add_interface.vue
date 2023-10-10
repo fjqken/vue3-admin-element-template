@@ -31,7 +31,8 @@
   });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+  //scoped 只运用在当前文件
   .a {
     color: $base-color-yellow;
   }
