@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-
+import './assets/fonts/iconfont.css'
 // permission 权限文件
 import './config/permission';
 

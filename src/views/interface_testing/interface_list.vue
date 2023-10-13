@@ -1,22 +1,18 @@
 <template>
   <div>
-<!--    <my-dialog-->
-<!--      ref="dataDialog"-->
-<!--      :title="MyDialog_body.title"-->
-<!--      :content="MyDialog_body.content"-->
-<!--      :cancel-text="MyDialog_body.cancelText"-->
-<!--      :ok-text="MyDialog_body.okText"-->
-<!--      @ok="onOk"-->
-<!--      :visible1="true"-->
-<!--      :parentMethod="onOk"-->
-<!--    >-->
-<!--      aaa-->
-<!--    </my-dialog>-->
-    <addInterface
-      :title="MyDialog_body.title"
-      v-if="true"
-    >
-    </addInterface>
+    <!--    <my-dialog-->
+    <!--      ref="dataDialog"-->
+    <!--      :title="MyDialog_body.title"-->
+    <!--      :content="MyDialog_body.content"-->
+    <!--      :cancel-text="MyDialog_body.cancelText"-->
+    <!--      :ok-text="MyDialog_body.okText"-->
+    <!--      @ok="onOk"-->
+    <!--      :visible1="true"-->
+    <!--      :parentMethod="onOk"-->
+    <!--    >-->
+    <!--      aaa-->
+    <!--    </my-dialog>-->
+    <addInterface :title="MyDialog_body.title" v-if="true"> </addInterface>
     <div class="flex_headers">
       <div style="margin-bottom: 20px">
         <el-input
@@ -33,11 +29,13 @@
         />
         <el-button type="primary" :icon="Search" @click="getWorkshopPageFn">搜索</el-button>
       </div>
+      1111
       <el-button type="primary" plain style="margin-right: 20px" @click="showDialog1"
-        >添加接口</el-button
-      >
+        >添加接口
+        <icon-fingerprint theme="multi-color" size="24" :fill="['#333' ,'#2c5288' ,'#FFF' ,'#43CCF8']"/>
+      </el-button>
       <el-button type="primary" plain style="margin-right: 20px" @click="showDialog1"
-        >添加接口1</el-button
+        ><i class="iconfont icon-tianjia"></i>添加接口1</el-button
       >
     </div>
     <div>
@@ -202,7 +200,7 @@
     dataDialog.value.setdialogvisible(true);
   };
 </script>
-<style>
+<style lang="scss" scoped>
   .flex_headers {
     display: flex;
     flex-direction: row;

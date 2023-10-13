@@ -63,6 +63,7 @@ import '@icon-park/vue-next/styles/index.css';
 // el-icon
 // 所需的组件
 export const components = [
+
   User,
   Lock,
   Alipay,

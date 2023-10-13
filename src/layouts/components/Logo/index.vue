@@ -4,7 +4,6 @@
     class="logo-wrapper"
     :class="{ unfold: collapse, horizontal: mode === 'horizontal' }"
   >
-    //显示图标库的图表
     <svg-icon name="vue" size="35px"/>
     <span class="logo-title" :style="{ color: textColor }" v-if="!collapse"> vue3-admin </span>
   </div>
