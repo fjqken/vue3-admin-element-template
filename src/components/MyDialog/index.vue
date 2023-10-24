@@ -1,7 +1,12 @@
 <template>
   <div>
-    <el-dialog :title="title" v-model="visible" :close-on-click-modal="false">
-<!--      <span>{{ content }}</span>-->
+    <el-dialog
+      :title="title"
+      v-model="visible"
+      :close-on-click-modal="false"
+      @close="visible1 = false"
+    >
+      <!--      <span>{{ content }}</span>-->
       <div><component :is="comps"></component></div>
       <slot></slot>
       <template v-slot:footer class="dialog-footer">
@@ -45,7 +50,7 @@
 <!--</script>-->
 
 <script setup>
-  import { ref } from 'vue';
+import {inject, ref} from 'vue';
   const props = defineProps({
     title: {
       type: String,
@@ -71,15 +76,16 @@
       require: false,
     },
   });
-  const emit = defineEmits(['ok']);
-  const changeTotal = () => {
-    emit('ok');
-  };
+  // const emit = defineEmits(['ok']);
+  // const changeTotal = () => {
+  //   emit('ok');
+  // };
+  const visible1 = inject('visible1');
   const visible = ref(true);
-  const ok = () => {
-    context.emit('ok');
-    visible.value = false;
-  };
+  // const ok = () => {
+  //   context.emit('ok');
+  //   visible.value = false;
+  // };
   const setdialogvisible = async (res) => {
     visible.value = res;
   };

@@ -1,12 +1,18 @@
 <template>
-  <my-dialog ref="dataDialog" :title="title" :content="111" :parentMethod="onOk">
-    <div class="a">aaaa</div>
-  </my-dialog>
+  <MyDialog2
+    ref="dataDialog2"
+    :title="title"
+    :content="1111111"
+    :parentMethod="onOk"
+    :flag1="visible2"
+  >
+    <div class="a">aaaa111111</div>
+  </MyDialog2>
 </template>
 
 <script setup>
   import { ref } from 'vue';
-  import MyDialog from '@/components/MyDialog/index.vue';
+  import MyDialog2 from '@/components/MyDialog2/index.vue';
   const visible = ref(true);
   // const title = ref('标题');
   const emit = defineEmits(['clickcancel']);
@@ -20,10 +26,10 @@
       type: String,
       default: 'tittle',
     },
-    // visible: {
-    //   type: Boolean,
-    //   default: true,
-    // },
+    visible2: {
+      type: Boolean,
+      default: true,
+    },
   });
 </script>
 

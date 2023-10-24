@@ -1,18 +1,7 @@
 <template>
   <div>
-    <!--    <my-dialog-->
-    <!--      ref="dataDialog"-->
-    <!--      :title="MyDialog_body.title"-->
-    <!--      :content="MyDialog_body.content"-->
-    <!--      :cancel-text="MyDialog_body.cancelText"-->
-    <!--      :ok-text="MyDialog_body.okText"-->
-    <!--      @ok="onOk"-->
-    <!--      :visible1="true"-->
-    <!--      :parentMethod="onOk"-->
-    <!--    >-->
-    <!--      aaa-->
-    <!--    </my-dialog>-->
-    <addInterface :title="MyDialog_body.title" v-if="true"> </addInterface>
+    <addInterface @clickcancel="changevisible" :title="MyDialog_body.title" v-if="visible">
+    </addInterface>
     <div class="flex_headers">
       <div style="margin-bottom: 20px">
         <el-input
@@ -30,7 +19,7 @@
         <el-button type="primary" :icon="Search" @click="getWorkshopPageFn">搜索</el-button>
       </div>
       1111
-      <el-button type="primary" plain style="margin-right: 20px" @click="showDialog1"
+      <el-button type="primary" plain style="margin-right: 20px" @click="showDialog2"
         >添加接口
         <icon-fingerprint theme="multi-color" size="24" :fill="['#333' ,'#2c5288' ,'#FFF' ,'#43CCF8']"/>
       </el-button>
@@ -68,15 +57,17 @@
         </template>
       </proTable>
     </div>
+    <addInterface2 :title="MyDialog_body.title" > </addInterface2>
+
   </div>
 </template>
 
 <script setup>
   import proTable from '@/components/proTable/index.vue';
   import { Search, Delete, Edit } from '@element-plus/icons-vue';
-  import MyDialog from '@/components/MyDialog/index.vue';
   import addInterface from './components/add_interface.vue';
-  import { onMounted, ref } from 'vue';
+  import addInterface2 from './components/add_interface.vue';
+  import { onMounted, provide, ref } from 'vue';
   import { useHandleData } from '@/utils/useHandleData';
   import {
     updata_interface_test,
@@ -91,6 +82,7 @@
   const pageSizes = ref(10);
   const name = ref('');
   const methods = ref('');
+  const visible = ref(false)
   const MyDialog_body = ref({
     title: '弹窗标题1',
     content: '弹窗内容1111',
@@ -197,8 +189,15 @@
   //设置弹窗显示
   const dataDialog = ref(null);
   const showDialog1 = () => {
-    dataDialog.value.setdialogvisible(true);
+    console.log(dataDialog.value.getFirstData());
   };
+  const showDialog2 = () => {
+    visible.value = true;
+  };
+  const changevisible = (data) => {
+    visible.value = data;
+  };
+  provide('visible1', visible)
 </script>
 <style lang="scss" scoped>
   .flex_headers {
