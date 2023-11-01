@@ -57,8 +57,7 @@
         </template>
       </proTable>
     </div>
-    <addInterface2 :title="MyDialog_body.title" > </addInterface2>
-
+    <addInterface2 :title="MyDialog_body.title" :visible2="visible2"> </addInterface2>
   </div>
 </template>
 
@@ -66,7 +65,7 @@
   import proTable from '@/components/proTable/index.vue';
   import { Search, Delete, Edit } from '@element-plus/icons-vue';
   import addInterface from './components/add_interface.vue';
-  import addInterface2 from './components/add_interface.vue';
+  import addInterface2 from './components/add_interface2.vue';
   import { onMounted, provide, ref } from 'vue';
   import { useHandleData } from '@/utils/useHandleData';
   import {
@@ -188,8 +187,10 @@
   };
   //设置弹窗显示
   const dataDialog = ref(null);
+  const visible2 = ref(false);
   const showDialog1 = () => {
-    console.log(dataDialog.value.getFirstData());
+    // console.log(dataDialog.value.getFirstData());
+    visible2.value = !visible2.value;
   };
   const showDialog2 = () => {
     visible.value = true;

@@ -48,15 +48,27 @@
   // const changeTotal = () => {
   //   emit('ok');
   // };
+  const visible = ref(false);
   watch(
     () => props.flag1,
     (newVal, oldVal) => {
       console.log(newVal);
       console.log(oldVal);
+      test1('aaaaaaaaaaaaaa');
+      visible.value = newVal;
       // 处理数据变化的逻辑
     }
   );
-  const visible = ref(true);
+  const test1 = (a) => {
+    console.log(a);
+  };
+  const handleWatch = (
+    newValue,
+    oldValue
+  ) => {
+    console.log({ newValue, oldValue })
+  };
+
   //目的是把属性和方法暴露出去，可以用于父子组件通信
   defineExpose({});
 </script>

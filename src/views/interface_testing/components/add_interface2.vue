@@ -13,7 +13,6 @@
 <script setup>
   import { ref } from 'vue';
   import MyDialog2 from '@/components/MyDialog2/index.vue';
-  const visible = ref(true);
   // const title = ref('标题');
   const emit = defineEmits(['clickcancel']);
   const onOk = () => {
@@ -28,7 +27,7 @@
     },
     visible2: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   });
 </script>
